@@ -1,6 +1,6 @@
 defmodule Lists do
   def len([]), do: 0
-  def len([_h|t]), do: 1 + len(t)
+  def len([_|t]), do: 1 + len(t)
 
   # sum of the list elements
   def sum([]), do: 0
@@ -24,6 +24,6 @@ defmodule Lists do
   def sum_pairs([f,s | t]),do: [f + s | sum_pairs(t)] 
 
   def even_length?([]), do: true
-  def even_length?([h|[]]), do: false
-  def even_length?([_h|t]),do: even_length?(t)
+  def even_length?([_|[]]), do: false
+  def even_length?([_|t]),do: even_length?(t)
 end
