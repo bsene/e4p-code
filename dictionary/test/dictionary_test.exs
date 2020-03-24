@@ -14,11 +14,4 @@ defmodule DictionaryTest do
     assert Dictionary.word_list("toto\npapa") == ["toto","papa"]
     assert Dictionary.word_list("toto\npapa\nmaman") == ["toto","papa", "maman"]
   end
-
-  test "should return randomized list" do
-    words = "toto\npapa\n"
-    assert Dictionary.random_list(words) != Dictionary.random_list(words)
-    words = "toto\npapa\nmaman"
-    assert Dictionary.random_list(words) != Dictionary.random_list(words)
-  end
 end
