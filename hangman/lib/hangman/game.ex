@@ -4,7 +4,7 @@ defmodule Hangman.Game do
     turns_left: 7,
     game_state: :initializing,
     letters: [],
-    used: MapSet.new
+    used: []
   )
   def new_game() do
     %Hangman.Game{
@@ -18,19 +18,18 @@ defmodule Hangman.Game do
 
   def make_move(game, guess) do
     { 
-      accept_move(game, guess, MapSet.member?(game.used, guess)),
+      accept_move(game, guess,guess in game.used),
       tally(game)
     }
   end
 
-  def accept_move(game,_guess, _already_guessed = true) do
+  def accept_move(game, _guess, _already_guessed = true) do
     Map.put(game, :game_state, :already_used)
   end
 
   def accept_move(game, guess, _already_guessed) do
-    Map.put(game, :used, MapSet.put(game.used, guess))
+    Map.put(game, :used, [ guess | game.used])
   end
-
 
   def tally(_game) do
     123
